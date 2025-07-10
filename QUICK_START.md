@@ -29,8 +29,8 @@ git commit -m "Initial commit: FinGenie Financial Assistant"
 # Create main branch
 git branch -M main
 
-# Add your GitHub repository (replace 'yourusername')
-git remote add origin https://github.com/yourusername/fingenie-financial-assistant.git
+# Add your GitHub repository
+git remote add origin https://github.com/Rexosaury/Project_Artha.git
 
 # Push to GitHub
 git push -u origin main
@@ -41,12 +41,12 @@ git push -u origin main
 1. Go to [vercel.com](https://vercel.com)
 2. Sign in with GitHub
 3. Click "New Project"
-4. Import your `fingenie-financial-assistant` repository
+4. Import your `Project_Artha` repository
 5. Click "Deploy" (Vercel auto-detects all settings)
 
 ### Step 3: Share Your App! (1 minute)
 
-Your app will be live at: `https://fingenie-financial-assistant-[random].vercel.app`
+Your app will be live at: `https://project-artha-[random].vercel.app`
 
 ## 🎯 What You Get
 

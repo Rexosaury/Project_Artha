@@ -27,13 +27,13 @@
   ],
   "author": "FinGenie Team",
   "license": "MIT",
-  "homepage": "https://fingenie-financial-assistant.vercel.app",
+  "homepage": "https://project-artha.vercel.app",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/fingenie-financial-assistant.git"
+    "url": "https://github.com/Rexosaury/Project_Artha.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/fingenie-financial-assistant/issues"
+    "url": "https://github.com/Rexosaury/Project_Artha/issues"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
