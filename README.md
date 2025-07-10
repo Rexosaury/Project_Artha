@@ -1,4 +1,4 @@
-# FinGenie - Your Financial Assistant
+# Project Artha - FinGenie Financial Assistant
 
 A modern, responsive React.js application that serves as an AI-powered financial assistant. Built with TypeScript, Tailwind CSS, and Chart.js.
 
@@ -24,8 +24,8 @@ A modern, responsive React.js application that serves as an AI-powered financial
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/fingenie-financial-assistant.git
-   cd fingenie-financial-assistant
+   git clone https://github.com/Rexosaury/Project_Artha.git
+   cd Project_Artha
    ```
 
 2. **Install dependencies:**
@@ -101,7 +101,7 @@ The built files will be in the `dist` directory.
 ## 🚀 Quick Deploy to Vercel
 
 ### Option 1: One-Click Deploy
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/fingenie-financial-assistant)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Rexosaury/Project_Artha)
 
 ### Option 2: Manual GitHub + Vercel Setup
 
@@ -112,7 +112,7 @@ The built files will be in the `dist` directory.
    git add .
    git commit -m "Initial commit: FinGenie Financial Assistant"
    git branch -M main
-   git remote add origin https://github.com/yourusername/fingenie-financial-assistant.git
+   git remote add origin https://github.com/Rexosaury/Project_Artha.git
    git push -u origin main
    ```
 
@@ -180,3 +180,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ---
 
 **Note**: This is a frontend-only application with dummy data for demonstration purposes. For production use, integrate with a real backend API and financial data sources.
+
