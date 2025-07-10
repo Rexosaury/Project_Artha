@@ -1,7 +1,7 @@
 {
-  "name": "fingenie-financial-assistant",
+  "name": "project-artha-financial-assistant",
   "version": "1.0.0",
-  "description": "FinGenie - Your AI Financial Assistant built with React and TypeScript",
+  "description": "Project Artha - Your AI Financial Assistant built with React and TypeScript",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -25,7 +25,7 @@
     "dashboard",
     "charts"
   ],
-  "author": "FinGenie Team",
+  "author": "Project Artha Team",
   "license": "MIT",
   "homepage": "https://project-artha.vercel.app",
   "repository": {

@@ -3,7 +3,7 @@ import { Message, SIPPerformance, NetWorthData, UserProfile, GoalProgress, Anoma
 export const dummyMessages: Message[] = [
   {
     id: '1',
-    text: 'Hello! I\'m FinGenie, your AI financial assistant. How can I help you today?',
+    text: 'Hello! I\'m your Project Artha AI financial assistant. How can I help you today?',
     sender: 'ai',
     timestamp: new Date('2024-01-15T10:00:00'),
   },

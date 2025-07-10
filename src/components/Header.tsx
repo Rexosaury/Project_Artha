@@ -13,7 +13,7 @@ const Header: React.FC = () => {
           </div>
           <div>
             <h1 className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-royal-600 via-ocean-400 to-emerald-500 bg-clip-text text-transparent animate-gradient-shift">
-              FinGenie
+              Project Artha
             </h1>
             <p className="text-xs lg:text-sm text-text-secondary hidden sm:block font-medium">
               Your AI Financial Assistant

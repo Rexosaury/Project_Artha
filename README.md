@@ -1,4 +1,4 @@
-# Project Artha - FinGenie Financial Assistant
+# Project Artha - AI Financial Assistant
 
 A modern, responsive React.js application that serves as an AI-powered financial assistant. Built with TypeScript, Tailwind CSS, and Chart.js.
 
@@ -110,7 +110,7 @@ The built files will be in the `dist` directory.
    ```bash
    git init
    git add .
-   git commit -m "Initial commit: FinGenie Financial Assistant"
+   git commit -m "Initial commit: Project Artha Financial Assistant"
    git branch -M main
    git remote add origin https://github.com/Rexosaury/Project_Artha.git
    git push -u origin main
