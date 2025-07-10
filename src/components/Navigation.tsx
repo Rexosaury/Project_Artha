@@ -5,7 +5,23 @@ import {
   CalculatorIcon,
   DocumentArrowDownIcon,
   Bars3Icon,
-  XMarkIcon
+  XMarkIcon,
+  ArrowTrendingUpIcon,
+  WalletIcon,
+  DocumentTextIcon,
+  FlagIcon,
+  ArrowsRightLeftIcon,
+  CreditCardIcon,
+  BanknotesIcon,
+  ShieldCheckIcon,
+  DocumentIcon,
+  CogIcon,
+  QuestionMarkCircleIcon,
+  ChevronDownIcon,
+  ChevronRightIcon,
+  PlusIcon,
+  BellIcon,
+  StarIcon
 } from '@heroicons/react/24/outline';
 import { TabType } from '../types';
 
@@ -14,19 +30,128 @@ interface NavigationProps {
   onTabChange: (tab: TabType) => void;
 }
 
+interface NavSection {
+  title: string;
+  items: NavItem[];
+  isCollapsible?: boolean;
+}
+
+interface NavItem {
+  id: TabType;
+  label: string;
+  icon: React.ComponentType<any>;
+  badge?: string;
+  isNew?: boolean;
+  isPro?: boolean;
+}
+
 const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [collapsedSections, setCollapsedSections] = useState<string[]>([]);
 
-  const tabs = [
-    { id: 'dashboard' as TabType, label: 'Dashboard', icon: ChartBarIcon },
-    { id: 'chat' as TabType, label: 'Chat', icon: ChatBubbleLeftRightIcon },
-    { id: 'simulations' as TabType, label: 'Simulations', icon: CalculatorIcon },
-    { id: 'exports' as TabType, label: 'Exports', icon: DocumentArrowDownIcon },
+  const navSections: NavSection[] = [
+    {
+      title: 'Overview',
+      items: [
+        { id: 'dashboard', label: 'Dashboard', icon: ChartBarIcon },
+        { id: 'chat', label: 'AI Assistant', icon: ChatBubbleLeftRightIcon, badge: 'AI' },
+      ]
+    },
+    {
+      title: 'Investments',
+      isCollapsible: true,
+      items: [
+        { id: 'investments', label: 'Portfolio', icon: ArrowTrendingUpIcon },
+        { id: 'simulations', label: 'Goal Planning', icon: CalculatorIcon },
+        { id: 'reports', label: 'Performance', icon: DocumentTextIcon, isNew: true },
+      ]
+    },
+    {
+      title: 'Banking',
+      isCollapsible: true,
+      items: [
+        { id: 'transactions', label: 'Transactions', icon: ArrowsRightLeftIcon },
+        { id: 'cards', label: 'Cards & Accounts', icon: CreditCardIcon },
+        { id: 'loans', label: 'Loans & EMIs', icon: BanknotesIcon },
+      ]
+    },
+    {
+      title: 'Planning',
+      isCollapsible: true,
+      items: [
+        { id: 'budgeting', label: 'Budget Tracker', icon: WalletIcon },
+        { id: 'goals', label: 'Financial Goals', icon: FlagIcon },
+        { id: 'insurance', label: 'Insurance', icon: ShieldCheckIcon, isPro: true },
+        { id: 'taxes', label: 'Tax Planning', icon: DocumentIcon, isPro: true },
+      ]
+    },
+    {
+      title: 'Tools',
+      isCollapsible: true,
+      items: [
+        { id: 'exports', label: 'Data Export', icon: DocumentArrowDownIcon },
+        { id: 'settings', label: 'Settings', icon: CogIcon },
+        { id: 'help', label: 'Help & Support', icon: QuestionMarkCircleIcon },
+      ]
+    }
   ];
 
   const handleTabChange = (tab: TabType) => {
     onTabChange(tab);
     setIsMobileMenuOpen(false);
+  };
+
+  const toggleSection = (sectionTitle: string) => {
+    setCollapsedSections(prev =>
+      prev.includes(sectionTitle)
+        ? prev.filter(s => s !== sectionTitle)
+        : [...prev, sectionTitle]
+    );
+  };
+
+  const renderNavItem = (item: NavItem) => {
+    const Icon = item.icon;
+    const isActive = activeTab === item.id;
+
+    return (
+      <button
+        key={item.id}
+        onClick={() => handleTabChange(item.id)}
+        className={`w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl transition-all duration-300 group relative overflow-hidden ${
+          isActive
+            ? 'bg-gradient-royal text-white shadow-glow transform scale-105'
+            : 'text-text-secondary hover:bg-white/90 hover:text-text-primary hover:shadow-card hover:scale-102'
+        }`}
+      >
+        <Icon className={`w-5 h-5 transition-transform duration-300 relative z-10 ${isActive ? 'scale-110 animate-pulse' : 'group-hover:scale-110'}`} />
+        <span className="font-medium text-sm relative z-10 flex-1 text-left">{item.label}</span>
+
+        {/* Badges */}
+        <div className="flex items-center space-x-1 relative z-10">
+          {item.badge && (
+            <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${
+              isActive ? 'bg-white/20 text-white' : 'bg-royal-100 text-royal-600'
+            }`}>
+              {item.badge}
+            </span>
+          )}
+          {item.isNew && (
+            <span className="text-xs px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-600">
+              NEW
+            </span>
+          )}
+          {item.isPro && (
+            <span className="text-xs px-2 py-0.5 rounded-full font-bold bg-sunset-100 text-sunset-600">
+              PRO
+            </span>
+          )}
+        </div>
+
+        {isActive && (
+          <div className="absolute inset-0 bg-gradient-aurora opacity-20 animate-gradient-shift"></div>
+        )}
+      </button>
+    );
   };
 
   return (
@@ -44,71 +169,144 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
       </button>
 
       {/* Desktop Navigation */}
-      <nav className="hidden lg:block bg-white/95 backdrop-blur-md shadow-premium border-r-2 border-royal-100 w-80 min-h-screen p-8">
+      <nav className="hidden lg:block bg-white/95 backdrop-blur-md shadow-premium border-r-2 border-royal-100 w-72 min-h-screen p-4">
         <div className="space-y-4">
-          <div className="mb-10">
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-royal-600 to-ocean-500 bg-clip-text text-transparent mb-3">Navigation</h2>
-            <div className="w-16 h-1 bg-gradient-royal rounded-full shadow-glow"></div>
+          {/* Header */}
+          <div className="mb-6">
+            <h2 className="text-lg font-bold bg-gradient-to-r from-royal-600 to-ocean-500 bg-clip-text text-transparent mb-2">Navigation</h2>
+            <div className="w-12 h-0.5 bg-gradient-royal rounded-full shadow-glow"></div>
           </div>
 
-          {tabs.map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => onTabChange(tab.id)}
-                className={`w-full flex items-center space-x-5 px-8 py-5 rounded-2xl transition-all duration-300 group relative overflow-hidden ${
-                  isActive
-                    ? 'bg-gradient-royal text-white shadow-glow transform scale-105'
-                    : 'text-text-secondary hover:bg-white/90 hover:text-text-primary hover:shadow-card hover:scale-102'
-                }`}
-              >
-                <Icon className={`w-7 h-7 transition-transform duration-300 relative z-10 ${isActive ? 'scale-110 animate-pulse' : 'group-hover:scale-110'}`} />
-                <span className="font-bold text-lg relative z-10">{tab.label}</span>
-                {isActive && (
-                  <>
-                    <div className="ml-auto w-3 h-3 bg-white rounded-full animate-pulse-glow relative z-10"></div>
-                    <div className="absolute inset-0 bg-gradient-aurora opacity-20 animate-gradient-shift"></div>
-                  </>
-                )}
+          {/* Quick Actions */}
+          <div className="mb-6">
+            <div className="grid grid-cols-2 gap-2">
+              <button className="btn-primary flex items-center justify-center space-x-1 py-2 px-3">
+                <PlusIcon className="w-4 h-4" />
+                <span className="text-xs">Add Goal</span>
               </button>
-            );
-          })}
+              <button className="btn-secondary flex items-center justify-center space-x-1 py-2 px-3">
+                <BellIcon className="w-4 h-4" />
+                <span className="text-xs">Alerts</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Navigation Sections */}
+          <div className="space-y-3">
+            {navSections.map((section) => {
+              const isCollapsed = collapsedSections.includes(section.title);
+
+              return (
+                <div key={section.title} className="space-y-1">
+                  {/* Section Header */}
+                  <div className="flex items-center justify-between px-2 py-1">
+                    <h3 className="text-xs font-bold text-text-tertiary uppercase tracking-wider">
+                      {section.title}
+                    </h3>
+                    {section.isCollapsible && (
+                      <button
+                        onClick={() => toggleSection(section.title)}
+                        className="p-1 hover:bg-royal-100 rounded transition-colors"
+                      >
+                        {isCollapsed ? (
+                          <ChevronRightIcon className="w-3 h-3 text-text-tertiary" />
+                        ) : (
+                          <ChevronDownIcon className="w-3 h-3 text-text-tertiary" />
+                        )}
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Section Items */}
+                  {(!section.isCollapsible || !isCollapsed) && (
+                    <div className="space-y-1">
+                      {section.items.map(renderNavItem)}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Bottom Section */}
+          <div className="mt-8 pt-4 border-t border-royal-100">
+            <div className="bg-gradient-to-r from-royal-50 to-ocean-50 rounded-xl p-3">
+              <div className="flex items-center space-x-2 mb-2">
+                <StarIcon className="w-4 h-4 text-sunset-500" />
+                <span className="text-xs font-bold text-text-primary">Upgrade to Pro</span>
+              </div>
+              <p className="text-xs text-text-secondary mb-3">
+                Unlock advanced features and insights
+              </p>
+              <button className="btn-primary w-full py-2 text-xs">
+                Upgrade Now
+              </button>
+            </div>
+          </div>
         </div>
       </nav>
 
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm">
-          <nav className="bg-white/95 backdrop-blur-md w-72 min-h-screen p-6 shadow-strong">
-            <div className="space-y-3 mt-16">
-              <div className="mb-8">
-                <h2 className="text-lg font-bold text-text-primary mb-2">Navigation</h2>
-                <div className="w-12 h-1 bg-gradient-blue rounded-full"></div>
+          <nav className="bg-white/95 backdrop-blur-md w-80 min-h-screen p-4 shadow-strong overflow-y-auto">
+            <div className="space-y-4 mt-16">
+              {/* Header */}
+              <div className="mb-6">
+                <h2 className="text-lg font-bold bg-gradient-to-r from-royal-600 to-ocean-500 bg-clip-text text-transparent mb-2">Navigation</h2>
+                <div className="w-12 h-0.5 bg-gradient-royal rounded-full shadow-glow"></div>
               </div>
 
-              {tabs.map((tab) => {
-                const Icon = tab.icon;
-                const isActive = activeTab === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => handleTabChange(tab.id)}
-                    className={`w-full flex items-center space-x-4 px-6 py-4 rounded-xl transition-all duration-300 ${
-                      isActive
-                        ? 'bg-gradient-blue text-white shadow-glow'
-                        : 'text-text-secondary hover:bg-white/80 hover:text-text-primary hover:shadow-soft'
-                    }`}
-                  >
-                    <Icon className="w-6 h-6" />
-                    <span className="font-semibold text-base">{tab.label}</span>
-                    {isActive && (
-                      <div className="ml-auto w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                    )}
+              {/* Quick Actions */}
+              <div className="mb-6">
+                <div className="grid grid-cols-2 gap-2">
+                  <button className="btn-primary flex items-center justify-center space-x-1 py-2 px-3">
+                    <PlusIcon className="w-4 h-4" />
+                    <span className="text-xs">Add Goal</span>
                   </button>
-                );
-              })}
+                  <button className="btn-secondary flex items-center justify-center space-x-1 py-2 px-3">
+                    <BellIcon className="w-4 h-4" />
+                    <span className="text-xs">Alerts</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Navigation Sections */}
+              <div className="space-y-3">
+                {navSections.map((section) => {
+                  const isCollapsed = collapsedSections.includes(section.title);
+
+                  return (
+                    <div key={section.title} className="space-y-1">
+                      {/* Section Header */}
+                      <div className="flex items-center justify-between px-2 py-1">
+                        <h3 className="text-xs font-bold text-text-tertiary uppercase tracking-wider">
+                          {section.title}
+                        </h3>
+                        {section.isCollapsible && (
+                          <button
+                            onClick={() => toggleSection(section.title)}
+                            className="p-1 hover:bg-royal-100 rounded transition-colors"
+                          >
+                            {isCollapsed ? (
+                              <ChevronRightIcon className="w-3 h-3 text-text-tertiary" />
+                            ) : (
+                              <ChevronDownIcon className="w-3 h-3 text-text-tertiary" />
+                            )}
+                          </button>
+                        )}
+                      </div>
+
+                      {/* Section Items */}
+                      {(!section.isCollapsible || !isCollapsed) && (
+                        <div className="space-y-1">
+                          {section.items.map(renderNavItem)}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </nav>
         </div>

@@ -46,7 +46,7 @@ export interface NetWorthData {
   amount: number;
 }
 
-export type TabType = 'dashboard' | 'chat' | 'simulations' | 'exports';
+export type TabType = 'dashboard' | 'chat' | 'simulations' | 'exports' | 'investments' | 'budgeting' | 'reports' | 'goals' | 'transactions' | 'cards' | 'loans' | 'insurance' | 'taxes' | 'settings' | 'help';
 
 export interface ExportData {
   type: 'csv' | 'json';

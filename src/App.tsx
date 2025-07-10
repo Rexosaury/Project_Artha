@@ -5,6 +5,9 @@ import Dashboard from './pages/Dashboard';
 import Chat from './pages/Chat';
 import Simulations from './pages/Simulations';
 import Exports from './pages/Exports';
+import Investments from './pages/Investments';
+import Budgeting from './pages/Budgeting';
+import Transactions from './pages/Transactions';
 import { TabType } from './types';
 
 function App() {
@@ -20,6 +23,38 @@ function App() {
         return <Simulations />;
       case 'exports':
         return <Exports />;
+      case 'investments':
+        return <Investments />;
+      case 'budgeting':
+        return <Budgeting />;
+      case 'transactions':
+        return <Transactions />;
+      case 'reports':
+      case 'goals':
+      case 'cards':
+      case 'loans':
+      case 'insurance':
+      case 'taxes':
+      case 'settings':
+      case 'help':
+        return (
+          <div className="p-6 space-y-6 animate-fade-in">
+            <div className="card-premium p-8 text-center">
+              <h1 className="text-2xl font-bold text-text-primary mb-4">
+                {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} - Coming Soon!
+              </h1>
+              <p className="text-text-secondary mb-6">
+                This feature is under development and will be available soon.
+              </p>
+              <button
+                onClick={() => setActiveTab('dashboard')}
+                className="btn-primary"
+              >
+                Back to Dashboard
+              </button>
+            </div>
+          </div>
+        );
       default:
         return <Dashboard />;
     }

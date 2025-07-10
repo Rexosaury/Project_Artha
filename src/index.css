@@ -48,7 +48,7 @@
 
   /* Premium Button System */
   .btn-primary {
-    @apply bg-gradient-royal text-white px-8 py-4 rounded-2xl font-semibold shadow-glow hover:shadow-premium hover:scale-105 transition-all duration-300 text-sm lg:text-base;
+    @apply bg-gradient-royal text-white px-4 py-2 rounded-xl font-medium shadow-glow hover:shadow-premium hover:scale-105 transition-all duration-300 text-sm;
     position: relative;
     overflow: hidden;
   }
@@ -69,19 +69,19 @@
   }
 
   .btn-secondary {
-    @apply bg-white/90 backdrop-blur-md text-text-primary px-8 py-4 rounded-2xl font-semibold border-2 border-royal-200 shadow-card hover:shadow-medium hover:bg-white hover:scale-105 transition-all duration-300 text-sm lg:text-base;
+    @apply bg-white/90 backdrop-blur-md text-text-primary px-4 py-2 rounded-xl font-medium border-2 border-royal-200 shadow-card hover:shadow-medium hover:bg-white hover:scale-105 transition-all duration-300 text-sm;
   }
 
   .btn-success {
-    @apply bg-gradient-emerald text-white px-8 py-4 rounded-2xl font-semibold shadow-glow-emerald hover:shadow-premium hover:scale-105 transition-all duration-300;
+    @apply bg-gradient-emerald text-white px-4 py-2 rounded-xl font-medium shadow-glow-emerald hover:shadow-premium hover:scale-105 transition-all duration-300 text-sm;
   }
 
   .btn-warning {
-    @apply bg-gradient-sunset text-white px-8 py-4 rounded-2xl font-semibold shadow-glow-sunset hover:shadow-premium hover:scale-105 transition-all duration-300;
+    @apply bg-gradient-sunset text-white px-4 py-2 rounded-xl font-medium shadow-glow-sunset hover:shadow-premium hover:scale-105 transition-all duration-300 text-sm;
   }
 
   .btn-danger {
-    @apply bg-gradient-rose text-white px-8 py-4 rounded-2xl font-semibold shadow-glow-rose hover:shadow-premium hover:scale-105 transition-all duration-300;
+    @apply bg-gradient-rose text-white px-4 py-2 rounded-xl font-medium shadow-glow-rose hover:shadow-premium hover:scale-105 transition-all duration-300 text-sm;
   }
 
   /* Premium Input Fields */
