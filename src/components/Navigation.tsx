@@ -44,22 +44,31 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
       </button>
 
       {/* Desktop Navigation */}
-      <nav className="hidden lg:block bg-white shadow-sm border-r border-gray-200 w-64 min-h-screen p-4">
-        <div className="space-y-2">
+      <nav className="hidden lg:block bg-white/80 backdrop-blur-md shadow-soft border-r border-bg-tertiary w-72 min-h-screen p-6">
+        <div className="space-y-3">
+          <div className="mb-8">
+            <h2 className="text-lg font-bold text-text-primary mb-2">Navigation</h2>
+            <div className="w-12 h-1 bg-gradient-blue rounded-full"></div>
+          </div>
+
           {tabs.map((tab) => {
             const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
             return (
               <button
                 key={tab.id}
                 onClick={() => onTabChange(tab.id)}
-                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 ${
-                  activeTab === tab.id
-                    ? 'bg-google-blue text-white'
-                    : 'text-google-gray hover:bg-gray-100'
+                className={`w-full flex items-center space-x-4 px-6 py-4 rounded-xl transition-all duration-300 group ${
+                  isActive
+                    ? 'bg-gradient-blue text-white shadow-glow transform scale-105'
+                    : 'text-text-secondary hover:bg-white/80 hover:text-text-primary hover:shadow-soft hover:scale-102'
                 }`}
               >
-                <Icon className="w-5 h-5" />
-                <span className="font-medium">{tab.label}</span>
+                <Icon className={`w-6 h-6 transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`} />
+                <span className="font-semibold text-base">{tab.label}</span>
+                {isActive && (
+                  <div className="ml-auto w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                )}
               </button>
             );
           })}
@@ -68,23 +77,32 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
 
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-black bg-opacity-50">
-          <nav className="bg-white w-64 min-h-screen p-4">
-            <div className="space-y-2 mt-16">
+        <div className="lg:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm">
+          <nav className="bg-white/95 backdrop-blur-md w-72 min-h-screen p-6 shadow-strong">
+            <div className="space-y-3 mt-16">
+              <div className="mb-8">
+                <h2 className="text-lg font-bold text-text-primary mb-2">Navigation</h2>
+                <div className="w-12 h-1 bg-gradient-blue rounded-full"></div>
+              </div>
+
               {tabs.map((tab) => {
                 const Icon = tab.icon;
+                const isActive = activeTab === tab.id;
                 return (
                   <button
                     key={tab.id}
                     onClick={() => handleTabChange(tab.id)}
-                    className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 ${
-                      activeTab === tab.id
-                        ? 'bg-google-blue text-white'
-                        : 'text-google-gray hover:bg-gray-100'
+                    className={`w-full flex items-center space-x-4 px-6 py-4 rounded-xl transition-all duration-300 ${
+                      isActive
+                        ? 'bg-gradient-blue text-white shadow-glow'
+                        : 'text-text-secondary hover:bg-white/80 hover:text-text-primary hover:shadow-soft'
                     }`}
                   >
-                    <Icon className="w-5 h-5" />
-                    <span className="font-medium">{tab.label}</span>
+                    <Icon className="w-6 h-6" />
+                    <span className="font-semibold text-base">{tab.label}</span>
+                    {isActive && (
+                      <div className="ml-auto w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                    )}
                   </button>
                 );
               })}

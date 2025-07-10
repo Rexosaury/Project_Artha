@@ -73,8 +73,8 @@ const Chart: React.FC<ChartProps> = ({ chartData, className = '' }) => {
   };
 
   return (
-    <div className={`bg-white rounded-lg p-4 shadow-sm ${className}`}>
-      <div className="h-64">
+    <div className={`card-premium p-6 hover:shadow-strong transition-all duration-300 ${className}`}>
+      <div className="h-72">
         {renderChart()}
       </div>
     </div>

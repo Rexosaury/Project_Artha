@@ -69,9 +69,14 @@ const GoalProgressCards: React.FC<GoalProgressCardsProps> = ({ goals, className 
 
   return (
     <div className={`${className}`}>
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-google-gray">🎯 Goal Tracker</h3>
-        <button className="text-google-blue hover:text-blue-700 text-sm font-medium flex items-center space-x-1">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h3 className="text-2xl font-bold bg-gradient-to-r from-fin-primary to-fin-accent bg-clip-text text-transparent">
+            🎯 Goal Tracker
+          </h3>
+          <p className="text-text-secondary font-medium mt-1">Track your financial milestones</p>
+        </div>
+        <button className="btn-primary flex items-center space-x-2">
           <PlusIcon className="w-4 h-4" />
           <span>Add Goal</span>
         </button>
@@ -81,7 +86,7 @@ const GoalProgressCards: React.FC<GoalProgressCardsProps> = ({ goals, className 
         {goals.map((goal) => (
           <div
             key={goal.id}
-            className={`bg-white rounded-lg p-4 border-2 border-gray-100 hover:border-google-blue transition-all duration-200 hover:shadow-md cursor-pointer ${getProgressBgColor(goal.progressPercentage)} bg-opacity-20`}
+            className={`card-premium p-6 hover:scale-105 hover:shadow-glow transition-all duration-300 cursor-pointer group ${getProgressBgColor(goal.progressPercentage)} bg-opacity-10`}
           >
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center space-x-2">

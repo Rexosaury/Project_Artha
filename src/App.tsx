@@ -26,7 +26,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-light-gray">
+    <div className="min-h-screen bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-primary">
       <Header />
       <div className="flex">
         <Navigation activeTab={activeTab} onTabChange={setActiveTab} />

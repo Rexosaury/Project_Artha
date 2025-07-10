@@ -5,45 +5,98 @@
 @layer base {
   body {
     font-family: 'Inter', 'Roboto', sans-serif;
-    background-color: #F5F6FA;
-    color: #202124;
+    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+    color: #0F172A;
+    min-height: 100vh;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 }
 
 @layer components {
+  /* Chat Bubbles with Glass Effect */
   .chat-bubble-user {
-    @apply bg-white border border-gray-200 rounded-lg p-3 ml-auto max-w-xs lg:max-w-sm shadow-sm;
+    @apply bg-gradient-to-br from-fin-accent to-blue-600 text-white rounded-2xl p-4 ml-auto max-w-xs lg:max-w-sm shadow-medium backdrop-blur-sm;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(29, 78, 216, 0.9) 100%);
   }
 
   .chat-bubble-ai {
-    @apply bg-chat-ai rounded-lg p-3 mr-auto max-w-xs lg:max-w-sm;
+    @apply bg-white/80 backdrop-blur-sm border border-chat-border rounded-2xl p-4 mr-auto max-w-xs lg:max-w-sm shadow-soft;
   }
 
+  /* Enhanced Buttons */
   .btn-primary {
-    @apply bg-google-blue text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-200 text-sm lg:text-base;
+    @apply bg-gradient-blue text-white px-6 py-3 rounded-xl font-medium shadow-medium hover:shadow-strong hover:scale-105 transition-all duration-300 text-sm lg:text-base;
   }
 
   .btn-secondary {
-    @apply bg-gray-100 text-google-gray px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors duration-200 text-sm lg:text-base;
+    @apply bg-white/80 backdrop-blur-sm text-text-primary px-6 py-3 rounded-xl font-medium border border-bg-tertiary shadow-soft hover:shadow-medium hover:bg-white transition-all duration-300 text-sm lg:text-base;
   }
 
+  .btn-success {
+    @apply bg-gradient-success text-white px-6 py-3 rounded-xl font-medium shadow-medium hover:shadow-glow-green hover:scale-105 transition-all duration-300;
+  }
+
+  .btn-warning {
+    @apply bg-gradient-warning text-white px-6 py-3 rounded-xl font-medium shadow-medium hover:shadow-strong hover:scale-105 transition-all duration-300;
+  }
+
+  .btn-danger {
+    @apply bg-gradient-danger text-white px-6 py-3 rounded-xl font-medium shadow-medium hover:shadow-strong hover:scale-105 transition-all duration-300;
+  }
+
+  /* Enhanced Input Fields */
   .input-field {
-    @apply border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-google-blue focus:border-transparent text-sm lg:text-base;
+    @apply border border-bg-tertiary rounded-xl px-4 py-3 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-fin-accent focus:border-transparent shadow-soft transition-all duration-300 text-sm lg:text-base;
   }
 
+  /* Navigation Tabs */
   .nav-tab {
-    @apply px-4 py-2 rounded-lg transition-colors duration-200 cursor-pointer;
+    @apply px-6 py-3 rounded-xl transition-all duration-300 cursor-pointer font-medium;
   }
 
   .nav-tab-active {
-    @apply bg-google-blue text-white;
+    @apply bg-gradient-blue text-white shadow-medium;
   }
 
   .nav-tab-inactive {
-    @apply text-google-gray hover:bg-gray-100;
+    @apply text-text-secondary hover:bg-white/80 hover:text-text-primary hover:shadow-soft;
   }
 
-  /* Mobile-specific styles */
+  /* Card Styles */
+  .card {
+    @apply bg-white/80 backdrop-blur-sm rounded-2xl shadow-soft border border-bg-tertiary transition-all duration-300 hover:shadow-medium;
+  }
+
+  .card-premium {
+    @apply bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-md rounded-2xl shadow-strong border border-white/20;
+  }
+
+  .card-glass {
+    @apply bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-soft;
+  }
+
+  /* Progress Bars */
+  .progress-bar {
+    @apply h-2 rounded-full overflow-hidden bg-bg-tertiary;
+  }
+
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  /* Mobile Responsive */
   @media (max-width: 1024px) {
     .chat-bubble-user, .chat-bubble-ai {
       @apply max-w-[280px];
@@ -52,7 +105,11 @@
 
   @media (max-width: 640px) {
     .chat-bubble-user, .chat-bubble-ai {
-      @apply max-w-[240px] text-sm;
+      @apply max-w-[240px] text-sm p-3;
+    }
+
+    .btn-primary, .btn-secondary {
+      @apply px-4 py-2 text-sm;
     }
   }
 }

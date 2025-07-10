@@ -58,33 +58,70 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-google-gray mb-2">Financial Dashboard</h1>
-        <p className="text-gray-600">Overview of your financial health and performance</p>
+    <div className="p-6 space-y-8 animate-fade-in">
+      <div className="mb-8">
+        <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-fin-primary to-fin-accent bg-clip-text text-transparent mb-3">
+          Financial Dashboard
+        </h1>
+        <p className="text-text-secondary text-lg font-medium">Overview of your financial health and performance</p>
       </div>
 
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-white rounded-lg p-4 shadow-sm">
-          <h3 className="text-sm font-medium text-gray-600">Current Net Worth</h3>
-          <p className="text-2xl font-bold text-google-gray">₹6,80,000</p>
-          <p className="text-sm text-green-600">+8% this year</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="card-premium p-6 hover:scale-105 transition-all duration-300 group">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-sm font-semibold text-text-secondary uppercase tracking-wide">Net Worth</h3>
+            <div className="w-10 h-10 bg-gradient-success rounded-xl flex items-center justify-center">
+              <span className="text-white text-xl">💰</span>
+            </div>
+          </div>
+          <p className="text-3xl font-bold text-text-primary mb-2">₹6,80,000</p>
+          <div className="flex items-center space-x-2">
+            <span className="text-sm font-semibold text-fin-success">+8% this year</span>
+            <div className="w-2 h-2 bg-fin-success rounded-full animate-pulse"></div>
+          </div>
         </div>
-        <div className="bg-white rounded-lg p-4 shadow-sm">
-          <h3 className="text-sm font-medium text-gray-600">Monthly SIP</h3>
-          <p className="text-2xl font-bold text-google-gray">₹25,000</p>
-          <p className="text-sm text-blue-600">3 active funds</p>
+
+        <div className="card-premium p-6 hover:scale-105 transition-all duration-300 group">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-sm font-semibold text-text-secondary uppercase tracking-wide">Monthly SIP</h3>
+            <div className="w-10 h-10 bg-gradient-blue rounded-xl flex items-center justify-center">
+              <span className="text-white text-xl">📈</span>
+            </div>
+          </div>
+          <p className="text-3xl font-bold text-text-primary mb-2">₹25,000</p>
+          <div className="flex items-center space-x-2">
+            <span className="text-sm font-semibold text-fin-accent">3 active funds</span>
+            <div className="w-2 h-2 bg-fin-accent rounded-full animate-pulse"></div>
+          </div>
         </div>
-        <div className="bg-white rounded-lg p-4 shadow-sm">
-          <h3 className="text-sm font-medium text-gray-600">Total Returns</h3>
-          <p className="text-2xl font-bold text-google-gray">₹55,000</p>
-          <p className="text-sm text-green-600">+18.3% overall</p>
+
+        <div className="card-premium p-6 hover:scale-105 transition-all duration-300 group">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-sm font-semibold text-text-secondary uppercase tracking-wide">Total Returns</h3>
+            <div className="w-10 h-10 bg-gradient-gold rounded-xl flex items-center justify-center">
+              <span className="text-white text-xl">🎯</span>
+            </div>
+          </div>
+          <p className="text-3xl font-bold text-text-primary mb-2">₹55,000</p>
+          <div className="flex items-center space-x-2">
+            <span className="text-sm font-semibold text-fin-success">+18.3% overall</span>
+            <div className="w-2 h-2 bg-fin-success rounded-full animate-pulse"></div>
+          </div>
         </div>
-        <div className="bg-white rounded-lg p-4 shadow-sm">
-          <h3 className="text-sm font-medium text-gray-600">Monthly Expenses</h3>
-          <p className="text-2xl font-bold text-google-gray">₹60,000</p>
-          <p className="text-sm text-red-600">+5% vs last month</p>
+
+        <div className="card-premium p-6 hover:scale-105 transition-all duration-300 group">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-sm font-semibold text-text-secondary uppercase tracking-wide">Monthly Expenses</h3>
+            <div className="w-10 h-10 bg-gradient-warning rounded-xl flex items-center justify-center">
+              <span className="text-white text-xl">💳</span>
+            </div>
+          </div>
+          <p className="text-3xl font-bold text-text-primary mb-2">₹60,000</p>
+          <div className="flex items-center space-x-2">
+            <span className="text-sm font-semibold text-fin-warning">+5% vs last month</span>
+            <div className="w-2 h-2 bg-fin-warning rounded-full animate-pulse"></div>
+          </div>
         </div>
       </div>
 

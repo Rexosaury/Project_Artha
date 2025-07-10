@@ -96,13 +96,15 @@ const ChatInterface: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-white rounded-lg shadow-sm">
+    <div className="flex flex-col h-full card-premium">
       {/* Chat Header */}
-      <div className="border-b border-gray-200 p-4">
+      <div className="border-b border-bg-tertiary p-6 bg-gradient-to-r from-white/90 to-white/70 rounded-t-2xl">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-lg font-semibold text-google-gray">Chat with FinGenie</h2>
-            <p className="text-sm text-gray-600">Ask me anything about your finances</p>
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-fin-primary to-fin-accent bg-clip-text text-transparent">
+              Chat with FinGenie
+            </h2>
+            <p className="text-text-secondary font-medium">Ask me anything about your finances</p>
           </div>
           <IntegrationBadges showInHeader={true} />
         </div>

@@ -66,8 +66,13 @@ const AnomalyAlerts: React.FC<AnomalyAlertsProps> = ({ alerts, className = '' })
   }
 
   return (
-    <div className={`space-y-3 ${className}`}>
-      <h3 className="text-lg font-semibold text-google-gray mb-3">🚨 Smart Alerts</h3>
+    <div className={`space-y-4 ${className}`}>
+      <div className="mb-6">
+        <h3 className="text-2xl font-bold bg-gradient-to-r from-fin-danger to-fin-warning bg-clip-text text-transparent">
+          🚨 Smart Alerts
+        </h3>
+        <p className="text-text-secondary font-medium mt-1">AI-powered anomaly detection</p>
+      </div>
       {alerts.map((alert) => {
         const severityConfig = getSeverityConfig(alert.severity);
         const TypeIcon = getTypeIcon(alert.type);
@@ -76,7 +81,7 @@ const AnomalyAlerts: React.FC<AnomalyAlertsProps> = ({ alerts, className = '' })
         return (
           <div
             key={alert.id}
-            className={`${severityConfig.bgColor} ${severityConfig.borderColor} border rounded-lg p-4 transition-all duration-200 hover:shadow-md`}
+            className={`${severityConfig.bgColor} ${severityConfig.borderColor} border-2 rounded-2xl p-6 transition-all duration-300 hover:shadow-strong hover:scale-102 animate-slide-up`}
           >
             <div className="flex items-start space-x-3">
               <div className="flex-shrink-0">
