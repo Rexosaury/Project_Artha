@@ -1,6 +1,9 @@
 import React from 'react';
 import Chart from '../components/Chart';
-import { netWorthData, sipPerformanceData, expenseCategories } from '../data/dummyData';
+import AnomalyAlerts from '../components/AnomalyAlerts';
+import GoalProgressCards from '../components/GoalProgressCards';
+import IntegrationBadges from '../components/IntegrationBadges';
+import { netWorthData, sipPerformanceData, expenseCategories, anomalyAlerts, goalProgress } from '../data/dummyData';
 import { ChartData } from '../types';
 
 const Dashboard: React.FC = () => {
@@ -85,32 +88,41 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
 
+      {/* Goal Progress Cards */}
+      <GoalProgressCards goals={goalProgress} className="mb-6" />
+
+      {/* Anomaly Alerts */}
+      <AnomalyAlerts alerts={anomalyAlerts} className="mb-6" />
+
       {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <Chart chartData={netWorthChartData} />
         <Chart chartData={sipPerformanceChartData} />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <Chart chartData={expenseChartData} />
         <div className="bg-white rounded-lg p-6 shadow-sm">
-          <h3 className="text-lg font-semibold mb-4">Recent Insights</h3>
+          <h3 className="text-lg font-semibold mb-4">💡 AI Insights</h3>
           <div className="space-y-3">
-            <div className="p-3 bg-green-50 rounded-lg">
-              <p className="text-sm font-medium text-green-800">Good News!</p>
-              <p className="text-sm text-green-700">Your SIP discipline is excellent. You've never missed a payment.</p>
+            <div className="p-3 bg-green-50 rounded-lg border-l-4 border-green-400">
+              <p className="text-sm font-medium text-green-800">✅ Excellent SIP Discipline</p>
+              <p className="text-sm text-green-700">You've never missed a payment. Keep it up!</p>
             </div>
-            <div className="p-3 bg-yellow-50 rounded-lg">
-              <p className="text-sm font-medium text-yellow-800">Attention Needed</p>
-              <p className="text-sm text-yellow-700">Dining expenses increased by 23% last month.</p>
-            </div>
-            <div className="p-3 bg-blue-50 rounded-lg">
-              <p className="text-sm font-medium text-blue-800">Opportunity</p>
+            <div className="p-3 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+              <p className="text-sm font-medium text-blue-800">📈 Investment Opportunity</p>
               <p className="text-sm text-blue-700">Consider switching from Fund X to higher-performing alternatives.</p>
+            </div>
+            <div className="p-3 bg-purple-50 rounded-lg border-l-4 border-purple-400">
+              <p className="text-sm font-medium text-purple-800">🎯 Goal Achievement</p>
+              <p className="text-sm text-purple-700">You're on track to achieve your home purchase goal 6 months early!</p>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Integration Status */}
+      <IntegrationBadges className="mb-6" />
     </div>
   );
 };

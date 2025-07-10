@@ -53,3 +53,36 @@ export interface ExportData {
   data: any;
   filename: string;
 }
+
+export interface UserProfile {
+  name: string;
+  avatar?: string;
+  initials: string;
+  netWorthGrowth: number;
+  lastLogin: Date;
+  totalSavings: number;
+  monthlyIncome: number;
+}
+
+export interface GoalProgress {
+  id: string;
+  title: string;
+  icon: string;
+  targetAmount: number;
+  currentAmount: number;
+  progressPercentage: number;
+  targetDate: string;
+  monthlyContribution: number;
+}
+
+export interface AnomalyAlert {
+  id: string;
+  type: 'expense' | 'income' | 'investment';
+  severity: 'low' | 'medium' | 'high';
+  title: string;
+  description: string;
+  amount: number;
+  category: string;
+  recommendation: string;
+  date: Date;
+}

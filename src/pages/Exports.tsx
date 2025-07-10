@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
-import { DocumentArrowDownIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
+import {
+  DocumentArrowDownIcon,
+  CheckCircleIcon,
+  TableCellsIcon
+} from '@heroicons/react/24/outline';
 
 const Exports: React.FC = () => {
   const [exportStatus, setExportStatus] = useState<{[key: string]: 'idle' | 'loading' | 'success'}>({});
 
-  const handleExport = (type: 'csv' | 'json', dataType: string) => {
+  const handleExport = (type: 'csv' | 'json' | 'sheets', dataType: string) => {
     const key = `${type}-${dataType}`;
     setExportStatus(prev => ({ ...prev, [key]: 'loading' }));
 
     // Simulate export process
     setTimeout(() => {
       setExportStatus(prev => ({ ...prev, [key]: 'success' }));
-      
+
       // Reset status after 3 seconds
       setTimeout(() => {
         setExportStatus(prev => ({ ...prev, [key]: 'idle' }));
@@ -58,7 +62,7 @@ const Exports: React.FC = () => {
     },
   ];
 
-  const getButtonContent = (type: 'csv' | 'json', dataType: string) => {
+  const getButtonContent = (type: 'csv' | 'json' | 'sheets', dataType: string) => {
     const key = `${type}-${dataType}`;
     const status = exportStatus[key] || 'idle';
 
@@ -78,6 +82,14 @@ const Exports: React.FC = () => {
           </>
         );
       default:
+        if (type === 'sheets') {
+          return (
+            <>
+              <TableCellsIcon className="w-4 h-4" />
+              <span>Google Sheets</span>
+            </>
+          );
+        }
         return (
           <>
             <DocumentArrowDownIcon className="w-4 h-4" />
@@ -105,21 +117,31 @@ const Exports: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex space-x-2">
+            <div className="space-y-2">
+              <div className="flex space-x-2">
+                <button
+                  onClick={() => handleExport('csv', option.dataType)}
+                  disabled={exportStatus[`csv-${option.dataType}`] === 'loading'}
+                  className="flex-1 btn-primary flex items-center justify-center space-x-2 disabled:opacity-50 text-sm"
+                >
+                  {getButtonContent('csv', option.dataType)}
+                </button>
+
+                <button
+                  onClick={() => handleExport('json', option.dataType)}
+                  disabled={exportStatus[`json-${option.dataType}`] === 'loading'}
+                  className="flex-1 btn-secondary flex items-center justify-center space-x-2 disabled:opacity-50 text-sm"
+                >
+                  {getButtonContent('json', option.dataType)}
+                </button>
+              </div>
+
               <button
-                onClick={() => handleExport('csv', option.dataType)}
-                disabled={exportStatus[`csv-${option.dataType}`] === 'loading'}
-                className="flex-1 btn-primary flex items-center justify-center space-x-2 disabled:opacity-50"
+                onClick={() => handleExport('sheets', option.dataType)}
+                disabled={exportStatus[`sheets-${option.dataType}`] === 'loading'}
+                className="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 text-sm"
               >
-                {getButtonContent('csv', option.dataType)}
-              </button>
-              
-              <button
-                onClick={() => handleExport('json', option.dataType)}
-                disabled={exportStatus[`json-${option.dataType}`] === 'loading'}
-                className="flex-1 btn-secondary flex items-center justify-center space-x-2 disabled:opacity-50"
-              >
-                {getButtonContent('json', option.dataType)}
+                {getButtonContent('sheets', option.dataType)}
               </button>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { Message, SIPPerformance, NetWorthData } from '../types';
+import { Message, SIPPerformance, NetWorthData, UserProfile, GoalProgress, AnomalyAlert } from '../types';
 
 export const dummyMessages: Message[] = [
   {
@@ -117,4 +117,82 @@ export const expenseCategories = [
   { category: 'Bills & Utilities', amount: 9000, percentage: 15 },
   { category: 'Healthcare', amount: 4000, percentage: 6.7 },
   { category: 'Others', amount: 6000, percentage: 10 }
+];
+
+export const userProfile: UserProfile = {
+  name: 'Aditya',
+  initials: 'AD',
+  netWorthGrowth: 8.2,
+  lastLogin: new Date(),
+  totalSavings: 680000,
+  monthlyIncome: 85000
+};
+
+export const goalProgress: GoalProgress[] = [
+  {
+    id: '1',
+    title: 'Buy a ₹50L house',
+    icon: '🏡',
+    targetAmount: 5000000,
+    currentAmount: 1750000,
+    progressPercentage: 35,
+    targetDate: 'Dec 2027',
+    monthlyContribution: 25000
+  },
+  {
+    id: '2',
+    title: 'Child Education Fund',
+    icon: '🎓',
+    targetAmount: 2500000,
+    currentAmount: 1550000,
+    progressPercentage: 62,
+    targetDate: 'Jun 2030',
+    monthlyContribution: 15000
+  },
+  {
+    id: '3',
+    title: 'Retirement Corpus',
+    icon: '🏖️',
+    targetAmount: 10000000,
+    currentAmount: 2800000,
+    progressPercentage: 28,
+    targetDate: 'Dec 2045',
+    monthlyContribution: 20000
+  }
+];
+
+export const anomalyAlerts: AnomalyAlert[] = [
+  {
+    id: '1',
+    type: 'expense',
+    severity: 'high',
+    title: 'Shopping Expense Spike',
+    description: '₹8,000 extra spent on shopping this month',
+    amount: 8000,
+    category: 'Shopping',
+    recommendation: 'Consider setting a monthly shopping budget of ₹12K',
+    date: new Date('2024-01-10')
+  },
+  {
+    id: '2',
+    type: 'expense',
+    severity: 'medium',
+    title: 'Dining Out Increase',
+    description: 'Food expenses up 23% compared to last month',
+    amount: 3500,
+    category: 'Food & Dining',
+    recommendation: 'Try meal planning to reduce dining out frequency',
+    date: new Date('2024-01-08')
+  },
+  {
+    id: '3',
+    type: 'investment',
+    severity: 'low',
+    title: 'SIP Performance Alert',
+    description: 'HDFC Fund underperforming benchmark by 2%',
+    amount: 0,
+    category: 'Investments',
+    recommendation: 'Consider switching to better performing funds',
+    date: new Date('2024-01-05')
+  }
 ];

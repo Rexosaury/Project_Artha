@@ -1,13 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { PaperAirplaneIcon, MicrophoneIcon } from '@heroicons/react/24/outline';
+import { PaperAirplaneIcon, MicrophoneIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 import { Message } from '../types';
 import ChatMessage from './ChatMessage';
 import { dummyMessages } from '../data/dummyData';
+import IntegrationBadges from './IntegrationBadges';
 
 const ChatInterface: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>(dummyMessages);
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showQuickActions, setShowQuickActions] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -45,9 +47,17 @@ const ChatInterface: React.FC = () => {
     }, 1500);
   };
 
+  const quickActions = [
+    "Can I afford a ₹50L home loan?",
+    "What if I increase my SIP to ₹20K?",
+    "Show my expense anomalies",
+    "Plan retirement by age 50",
+    "Compare mutual fund options"
+  ];
+
   const getAIResponse = (userInput: string): string => {
     const input = userInput.toLowerCase();
-    
+
     if (input.includes('loan') || input.includes('home')) {
       return "Based on your financial profile, I can help you assess loan eligibility. Your current savings and SIP investments show good financial discipline. Would you like me to run a detailed affordability analysis?";
     } else if (input.includes('sip') || input.includes('mutual fund')) {
@@ -56,9 +66,26 @@ const ChatInterface: React.FC = () => {
       return "I've detected some unusual spending patterns in your recent transactions. Your dining expenses increased by 23% last month. Would you like me to create a budget optimization plan?";
     } else if (input.includes('goal') || input.includes('retire')) {
       return "Let me help you plan for your financial goals. Based on your current investment rate, I can project different scenarios for retirement planning. What's your target retirement age?";
+    } else if (input.includes('what if') || input.includes('increase')) {
+      return "Great question! Let me run that simulation for you. If you increase your SIP to ₹20K, you could reach your goals 2.5 years earlier. Here's the updated projection with the new parameters.";
     } else {
       return "I'm here to help with all your financial questions! I can assist with loan eligibility, SIP analysis, expense tracking, goal planning, and much more. What specific area would you like to explore?";
     }
+  };
+
+  const handleReaction = (messageId: string, reaction: 'like' | 'dislike') => {
+    console.log(`Message ${messageId} received ${reaction} reaction`);
+    // In a real app, this would send feedback to the backend
+  };
+
+  const handleRetry = (messageId: string) => {
+    console.log(`Retrying message ${messageId}`);
+    // In a real app, this would regenerate the AI response
+  };
+
+  const handleQuickAction = (action: string) => {
+    setInputText(action);
+    setShowQuickActions(false);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -72,14 +99,49 @@ const ChatInterface: React.FC = () => {
     <div className="flex flex-col h-full bg-white rounded-lg shadow-sm">
       {/* Chat Header */}
       <div className="border-b border-gray-200 p-4">
-        <h2 className="text-lg font-semibold text-google-gray">Chat with FinGenie</h2>
-        <p className="text-sm text-gray-600">Ask me anything about your finances</p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-lg font-semibold text-google-gray">Chat with FinGenie</h2>
+            <p className="text-sm text-gray-600">Ask me anything about your finances</p>
+          </div>
+          <IntegrationBadges showInHeader={true} />
+        </div>
+
+        {/* Quick Actions */}
+        <div className="mt-3">
+          <button
+            onClick={() => setShowQuickActions(!showQuickActions)}
+            className="flex items-center space-x-2 text-sm text-google-blue hover:text-blue-700"
+          >
+            <AdjustmentsHorizontalIcon className="w-4 h-4" />
+            <span>Quick Actions</span>
+          </button>
+
+          {showQuickActions && (
+            <div className="mt-2 flex flex-wrap gap-2">
+              {quickActions.map((action, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleQuickAction(action)}
+                  className="text-xs bg-blue-50 text-google-blue px-3 py-1 rounded-full hover:bg-blue-100 transition-colors"
+                >
+                  {action}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((message) => (
-          <ChatMessage key={message.id} message={message} />
+          <ChatMessage
+            key={message.id}
+            message={message}
+            onReaction={handleReaction}
+            onRetry={handleRetry}
+          />
         ))}
         {isLoading && (
           <div className="flex justify-start">
