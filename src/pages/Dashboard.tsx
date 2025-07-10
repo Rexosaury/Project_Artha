@@ -58,69 +58,69 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="p-6 space-y-6 animate-fade-in">
-      <div className="mb-6">
-        <h1 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-royal-600 via-ocean-400 to-emerald-500 bg-clip-text text-transparent mb-3 animate-gradient-shift">
+    <div className="p-4 sm:p-6 space-y-6 sm:space-y-8 animate-fade-in">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-royal-600 via-ocean-400 to-emerald-500 bg-clip-text text-transparent mb-2 sm:mb-3 animate-gradient-shift leading-tight">
           Financial Dashboard
         </h1>
-        <p className="text-text-secondary text-base font-medium">Overview of your financial health and performance</p>
+        <p className="text-text-secondary text-sm sm:text-base font-medium">Overview of your financial health and performance</p>
       </div>
 
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-        <div className="card-aurora p-6 hover:scale-105 hover:shadow-glow transition-all duration-300 group animate-slide-up">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xs font-bold text-text-secondary uppercase tracking-wider">Net Worth</h3>
-            <div className="w-10 h-10 bg-gradient-emerald rounded-xl flex items-center justify-center shadow-glow-emerald animate-float">
-              <span className="text-white text-lg">💰</span>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
+        <div className="card-aurora p-5 sm:p-6 hover:scale-105 hover:shadow-glow transition-all duration-300 group animate-slide-up touch-manipulation">
+          <div className="flex items-center justify-between mb-4 sm:mb-5">
+            <h3 className="text-xs sm:text-sm font-bold text-text-secondary uppercase tracking-wider">Net Worth</h3>
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-emerald rounded-2xl flex items-center justify-center shadow-glow-emerald animate-float">
+              <span className="text-white text-xl sm:text-2xl">💰</span>
             </div>
           </div>
-          <p className="text-2xl font-bold text-text-primary mb-2">₹6,80,000</p>
+          <p className="text-2xl sm:text-3xl font-bold text-text-primary mb-2 sm:mb-3">₹6,80,000</p>
           <div className="flex items-center space-x-2">
-            <span className="text-sm font-bold text-emerald-600">+8% this year</span>
-            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse-glow"></div>
+            <span className="text-sm sm:text-base font-bold text-emerald-600">+8% this year</span>
+            <div className="w-2 h-2 sm:w-3 sm:h-3 bg-emerald-500 rounded-full animate-pulse-glow"></div>
           </div>
         </div>
 
-        <div className="card-aurora p-6 hover:scale-105 hover:shadow-glow transition-all duration-300 group animate-slide-up" style={{animationDelay: '0.1s'}}>
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xs font-bold text-text-secondary uppercase tracking-wider">Monthly SIP</h3>
-            <div className="w-10 h-10 bg-gradient-royal rounded-xl flex items-center justify-center shadow-glow animate-float">
-              <span className="text-white text-lg">📈</span>
+        <div className="card-aurora p-5 sm:p-6 hover:scale-105 hover:shadow-glow transition-all duration-300 group animate-slide-up touch-manipulation" style={{animationDelay: '0.1s'}}>
+          <div className="flex items-center justify-between mb-4 sm:mb-5">
+            <h3 className="text-xs sm:text-sm font-bold text-text-secondary uppercase tracking-wider">Monthly SIP</h3>
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-royal rounded-2xl flex items-center justify-center shadow-glow animate-float">
+              <span className="text-white text-xl sm:text-2xl">📈</span>
             </div>
           </div>
-          <p className="text-2xl font-bold text-text-primary mb-2">₹25,000</p>
+          <p className="text-2xl sm:text-3xl font-bold text-text-primary mb-2 sm:mb-3">₹25,000</p>
           <div className="flex items-center space-x-2">
-            <span className="text-sm font-bold text-royal-600">3 active funds</span>
-            <div className="w-2 h-2 bg-royal-500 rounded-full animate-pulse-glow"></div>
+            <span className="text-sm sm:text-base font-bold text-royal-600">3 active funds</span>
+            <div className="w-2 h-2 sm:w-3 sm:h-3 bg-royal-500 rounded-full animate-pulse-glow"></div>
           </div>
         </div>
 
-        <div className="card-aurora p-6 hover:scale-105 hover:shadow-glow transition-all duration-300 group animate-slide-up" style={{animationDelay: '0.2s'}}>
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xs font-bold text-text-secondary uppercase tracking-wider">Total Returns</h3>
-            <div className="w-10 h-10 bg-gradient-sunset rounded-xl flex items-center justify-center shadow-glow-sunset animate-float">
-              <span className="text-white text-lg">🎯</span>
+        <div className="card-aurora p-5 sm:p-6 hover:scale-105 hover:shadow-glow transition-all duration-300 group animate-slide-up touch-manipulation" style={{animationDelay: '0.2s'}}>
+          <div className="flex items-center justify-between mb-4 sm:mb-5">
+            <h3 className="text-xs sm:text-sm font-bold text-text-secondary uppercase tracking-wider">Total Returns</h3>
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-sunset rounded-2xl flex items-center justify-center shadow-glow-sunset animate-float">
+              <span className="text-white text-xl sm:text-2xl">🎯</span>
             </div>
           </div>
-          <p className="text-2xl font-bold text-text-primary mb-2">₹55,000</p>
+          <p className="text-2xl sm:text-3xl font-bold text-text-primary mb-2 sm:mb-3">₹55,000</p>
           <div className="flex items-center space-x-2">
-            <span className="text-sm font-bold text-sunset-600">+18.3% overall</span>
-            <div className="w-2 h-2 bg-sunset-500 rounded-full animate-pulse-glow"></div>
+            <span className="text-sm sm:text-base font-bold text-sunset-600">+18.3% overall</span>
+            <div className="w-2 h-2 sm:w-3 sm:h-3 bg-sunset-500 rounded-full animate-pulse-glow"></div>
           </div>
         </div>
 
-        <div className="card-aurora p-6 hover:scale-105 hover:shadow-glow transition-all duration-300 group animate-slide-up" style={{animationDelay: '0.3s'}}>
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xs font-bold text-text-secondary uppercase tracking-wider">Monthly Expenses</h3>
-            <div className="w-10 h-10 bg-gradient-ocean rounded-xl flex items-center justify-center shadow-glow-cyan animate-float">
-              <span className="text-white text-lg">💳</span>
+        <div className="card-aurora p-5 sm:p-6 hover:scale-105 hover:shadow-glow transition-all duration-300 group animate-slide-up touch-manipulation" style={{animationDelay: '0.3s'}}>
+          <div className="flex items-center justify-between mb-4 sm:mb-5">
+            <h3 className="text-xs sm:text-sm font-bold text-text-secondary uppercase tracking-wider">Monthly Expenses</h3>
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-ocean rounded-2xl flex items-center justify-center shadow-glow-cyan animate-float">
+              <span className="text-white text-xl sm:text-2xl">💳</span>
             </div>
           </div>
-          <p className="text-2xl font-bold text-text-primary mb-2">₹60,000</p>
+          <p className="text-2xl sm:text-3xl font-bold text-text-primary mb-2 sm:mb-3">₹60,000</p>
           <div className="flex items-center space-x-2">
-            <span className="text-sm font-bold text-ocean-600">+5% vs last month</span>
-            <div className="w-2 h-2 bg-ocean-500 rounded-full animate-pulse-glow"></div>
+            <span className="text-sm sm:text-base font-bold text-ocean-600">+5% vs last month</span>
+            <div className="w-2 h-2 sm:w-3 sm:h-3 bg-ocean-500 rounded-full animate-pulse-glow"></div>
           </div>
         </div>
       </div>

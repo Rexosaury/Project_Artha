@@ -62,8 +62,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-tertiary relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Animated Background Elements - Hidden on mobile for performance */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-royal rounded-full opacity-10 animate-float"></div>
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-ocean rounded-full opacity-10 animate-float" style={{animationDelay: '2s'}}></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-emerald rounded-full opacity-5 animate-float" style={{animationDelay: '4s'}}></div>
@@ -72,8 +72,8 @@ function App() {
       <Header />
       <div className="flex relative z-10">
         <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
-        <main className="flex-1 min-h-screen lg:ml-0 ml-0">
-          <div className="lg:p-0 p-4">
+        <main className="flex-1 min-h-screen w-full lg:ml-0">
+          <div className="w-full mobile-scroll">
             {renderContent()}
           </div>
         </main>

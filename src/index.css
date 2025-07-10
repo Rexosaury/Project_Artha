@@ -10,6 +10,8 @@
     animation: gradientShift 15s ease infinite;
     color: #0F172A;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   html {
@@ -19,14 +21,36 @@
   * {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
+
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    body {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+
+  /* Touch-friendly interactions */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Better mobile scrolling */
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
 }
 
 @layer components {
   /* Premium Chat Bubbles */
   .chat-bubble-user {
-    @apply bg-gradient-royal text-white rounded-3xl p-5 ml-auto max-w-xs lg:max-w-sm shadow-glow backdrop-blur-sm border border-white/20;
+    @apply bg-gradient-royal text-white rounded-3xl p-4 sm:p-5 ml-auto max-w-xs sm:max-w-sm lg:max-w-md shadow-glow backdrop-blur-sm border border-white/20;
     position: relative;
     overflow: hidden;
+    font-size: 0.875rem;
+    line-height: 1.5;
   }
 
   .chat-bubble-user::before {
@@ -41,9 +65,20 @@
   }
 
   .chat-bubble-ai {
-    @apply bg-white/90 backdrop-blur-md border-2 border-royal-100 rounded-3xl p-5 mr-auto max-w-xs lg:max-w-sm shadow-card hover:shadow-medium transition-all duration-300;
+    @apply bg-white/90 backdrop-blur-md border-2 border-royal-100 rounded-3xl p-4 sm:p-5 mr-auto max-w-xs sm:max-w-sm lg:max-w-md shadow-card hover:shadow-medium transition-all duration-300;
     position: relative;
     background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,255,0.95) 100%);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    .chat-bubble-user,
+    .chat-bubble-ai {
+      max-width: calc(100% - 3rem);
+      font-size: 0.8rem;
+      padding: 1rem;
+    }
   }
 
   /* Premium Button System */

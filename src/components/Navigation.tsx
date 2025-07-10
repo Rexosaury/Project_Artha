@@ -117,31 +117,31 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
       <button
         key={item.id}
         onClick={() => handleTabChange(item.id)}
-        className={`w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl transition-all duration-300 group relative overflow-hidden ${
+        className={`w-full flex items-center space-x-4 px-5 py-4 rounded-2xl transition-all duration-300 group relative overflow-hidden touch-manipulation ${
           isActive
             ? 'bg-gradient-royal text-white shadow-glow transform scale-105'
-            : 'text-text-secondary hover:bg-white/90 hover:text-text-primary hover:shadow-card hover:scale-102'
+            : 'text-text-secondary hover:bg-white/90 hover:text-text-primary hover:shadow-card hover:scale-102 active:scale-100'
         }`}
       >
-        <Icon className={`w-5 h-5 transition-transform duration-300 relative z-10 ${isActive ? 'scale-110 animate-pulse' : 'group-hover:scale-110'}`} />
-        <span className="font-medium text-sm relative z-10 flex-1 text-left">{item.label}</span>
+        <Icon className={`w-6 h-6 transition-transform duration-300 relative z-10 ${isActive ? 'scale-110 animate-pulse' : 'group-hover:scale-110'}`} />
+        <span className="font-semibold text-base relative z-10 flex-1 text-left">{item.label}</span>
 
         {/* Badges */}
-        <div className="flex items-center space-x-1 relative z-10">
+        <div className="flex items-center space-x-2 relative z-10">
           {item.badge && (
-            <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${
+            <span className={`text-xs px-3 py-1 rounded-full font-bold ${
               isActive ? 'bg-white/20 text-white' : 'bg-royal-100 text-royal-600'
             }`}>
               {item.badge}
             </span>
           )}
           {item.isNew && (
-            <span className="text-xs px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-600">
+            <span className="text-xs px-3 py-1 rounded-full font-bold bg-emerald-100 text-emerald-600">
               NEW
             </span>
           )}
           {item.isPro && (
-            <span className="text-xs px-2 py-0.5 rounded-full font-bold bg-sunset-100 text-sunset-600">
+            <span className="text-xs px-3 py-1 rounded-full font-bold bg-sunset-100 text-sunset-600">
               PRO
             </span>
           )}
@@ -248,50 +248,50 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
 
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm">
-          <nav className="bg-white/95 backdrop-blur-md w-80 min-h-screen p-4 shadow-strong overflow-y-auto">
-            <div className="space-y-4 mt-16">
+        <div className="lg:hidden fixed inset-0 z-40 bg-black/60 backdrop-blur-sm animate-fade-in">
+          <nav className="bg-white/98 backdrop-blur-md w-full max-w-sm min-h-screen p-6 shadow-premium overflow-y-auto animate-slide-right">
+            <div className="space-y-6 mt-20">
               {/* Header */}
-              <div className="mb-6">
-                <h2 className="text-lg font-bold bg-gradient-to-r from-royal-600 to-ocean-500 bg-clip-text text-transparent mb-2">Navigation</h2>
-                <div className="w-12 h-0.5 bg-gradient-royal rounded-full shadow-glow"></div>
+              <div className="mb-8">
+                <h2 className="text-2xl font-bold bg-gradient-to-r from-royal-600 to-ocean-500 bg-clip-text text-transparent mb-3">Navigation</h2>
+                <div className="w-16 h-1 bg-gradient-royal rounded-full shadow-glow"></div>
               </div>
 
               {/* Quick Actions */}
-              <div className="mb-6">
-                <div className="grid grid-cols-2 gap-2">
-                  <button className="btn-primary flex items-center justify-center space-x-1 py-2 px-3">
-                    <PlusIcon className="w-4 h-4" />
-                    <span className="text-xs">Add Goal</span>
+              <div className="mb-8">
+                <div className="grid grid-cols-1 gap-3">
+                  <button className="btn-primary flex items-center justify-center space-x-2 py-4 px-4 text-sm">
+                    <PlusIcon className="w-5 h-5" />
+                    <span>Add Financial Goal</span>
                   </button>
-                  <button className="btn-secondary flex items-center justify-center space-x-1 py-2 px-3">
-                    <BellIcon className="w-4 h-4" />
-                    <span className="text-xs">Alerts</span>
+                  <button className="btn-secondary flex items-center justify-center space-x-2 py-4 px-4 text-sm">
+                    <BellIcon className="w-5 h-5" />
+                    <span>View Alerts</span>
                   </button>
                 </div>
               </div>
 
               {/* Navigation Sections */}
-              <div className="space-y-3">
+              <div className="space-y-6">
                 {navSections.map((section) => {
                   const isCollapsed = collapsedSections.includes(section.title);
 
                   return (
-                    <div key={section.title} className="space-y-1">
+                    <div key={section.title} className="space-y-3">
                       {/* Section Header */}
-                      <div className="flex items-center justify-between px-2 py-1">
-                        <h3 className="text-xs font-bold text-text-tertiary uppercase tracking-wider">
+                      <div className="flex items-center justify-between px-1 py-2">
+                        <h3 className="text-sm font-bold text-text-secondary uppercase tracking-wider">
                           {section.title}
                         </h3>
                         {section.isCollapsible && (
                           <button
                             onClick={() => toggleSection(section.title)}
-                            className="p-1 hover:bg-royal-100 rounded transition-colors"
+                            className="p-2 hover:bg-royal-100 rounded-xl transition-colors"
                           >
                             {isCollapsed ? (
-                              <ChevronRightIcon className="w-3 h-3 text-text-tertiary" />
+                              <ChevronRightIcon className="w-4 h-4 text-text-tertiary" />
                             ) : (
-                              <ChevronDownIcon className="w-3 h-3 text-text-tertiary" />
+                              <ChevronDownIcon className="w-4 h-4 text-text-tertiary" />
                             )}
                           </button>
                         )}
@@ -299,13 +299,29 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
 
                       {/* Section Items */}
                       {(!section.isCollapsible || !isCollapsed) && (
-                        <div className="space-y-1">
+                        <div className="space-y-2">
                           {section.items.map(renderNavItem)}
                         </div>
                       )}
                     </div>
                   );
                 })}
+              </div>
+
+              {/* Bottom Section */}
+              <div className="mt-12 pt-6 border-t border-royal-100">
+                <div className="bg-gradient-to-r from-royal-50 to-ocean-50 rounded-2xl p-6">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <StarIcon className="w-6 h-6 text-sunset-500" />
+                    <span className="text-base font-bold text-text-primary">Upgrade to Pro</span>
+                  </div>
+                  <p className="text-sm text-text-secondary mb-4 leading-relaxed">
+                    Unlock advanced features and insights for better financial planning
+                  </p>
+                  <button className="btn-primary w-full py-4 text-sm">
+                    Upgrade Now
+                  </button>
+                </div>
               </div>
             </div>
           </nav>

@@ -98,15 +98,17 @@ const ChatInterface: React.FC = () => {
   return (
     <div className="flex flex-col h-full card-premium">
       {/* Chat Header */}
-      <div className="border-b border-bg-tertiary p-6 bg-gradient-to-r from-white/90 to-white/70 rounded-t-2xl">
+      <div className="border-b border-bg-tertiary p-4 sm:p-6 bg-gradient-to-r from-white/90 to-white/70 rounded-t-2xl">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-fin-primary to-fin-accent bg-clip-text text-transparent">
-              Chat with FinGenie
+            <h2 className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-royal-600 via-ocean-400 to-emerald-500 bg-clip-text text-transparent">
+              Chat with Project Artha
             </h2>
-            <p className="text-text-secondary font-medium">Ask me anything about your finances</p>
+            <p className="text-text-secondary font-medium text-sm sm:text-base">Ask me anything about your finances</p>
           </div>
-          <IntegrationBadges showInHeader={true} />
+          <div className="hidden sm:block">
+            <IntegrationBadges showInHeader={true} />
+          </div>
         </div>
 
         {/* Quick Actions */}
@@ -160,28 +162,29 @@ const ChatInterface: React.FC = () => {
       </div>
 
       {/* Input */}
-      <div className="border-t border-gray-200 p-4">
-        <div className="flex items-center space-x-2">
+      <div className="border-t border-gray-200 p-3 sm:p-4">
+        <div className="flex items-center space-x-2 sm:space-x-3">
           <div className="flex-1 relative">
             <input
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder="Ask about loans, SIPs, expenses, or financial goals..."
-              className="w-full input-field pr-12"
+              placeholder="Ask about loans, SIPs, expenses..."
+              className="w-full input-field pr-12 text-sm sm:text-base py-3 sm:py-4"
               disabled={isLoading}
             />
-            <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-google-blue">
+            <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-royal-500 transition-colors">
               <MicrophoneIcon className="w-5 h-5" />
             </button>
           </div>
           <button
             onClick={handleSendMessage}
             disabled={!inputText.trim() || isLoading}
-            className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+            className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed w-12 h-12 sm:w-auto sm:h-auto sm:px-4 sm:py-3 flex items-center justify-center touch-manipulation"
           >
             <PaperAirplaneIcon className="w-5 h-5" />
+            <span className="hidden sm:inline sm:ml-2">Send</span>
           </button>
         </div>
       </div>
