@@ -35,17 +35,36 @@ const Header: React.FC = () => {
         </div>
 
         <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
-          {/* Performance Badge - Hidden on mobile */}
-          <div className="hidden lg:flex items-center space-x-2 bg-gradient-emerald px-3 py-2 rounded-xl shadow-glow-emerald hover:scale-105 transition-all duration-300">
-            <SparklesIcon className="w-4 h-4 text-white animate-pulse" />
-            <div className="text-xs">
-              <span className="text-white font-bold">+{userProfile.netWorthGrowth}% this year!</span>
+          {/* Enhanced User Context - Desktop */}
+          <div className="hidden lg:flex items-center space-x-4 bg-gradient-to-r from-white/90 to-royal-50/50 px-4 py-2 rounded-2xl shadow-premium border border-royal-100">
+            <div className="flex items-center space-x-2">
+              <span className="text-lg">👋</span>
+              <div>
+                <p className="text-sm font-bold text-text-primary">Hello, {userProfile.name}!</p>
+                <p className="text-xs text-text-secondary">Net Worth: ₹{(userProfile.totalSavings / 100000).toFixed(1)}L</p>
+              </div>
+            </div>
+            <div className="h-8 w-px bg-royal-200"></div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+              <span className="text-xs font-semibold text-emerald-700">Fi MCP: Connected</span>
             </div>
           </div>
 
-          {/* Mobile Performance Indicator */}
-          <div className="lg:hidden w-8 h-8 bg-gradient-emerald rounded-full flex items-center justify-center shadow-glow-emerald">
-            <span className="text-white font-bold text-xs">+{userProfile.netWorthGrowth}%</span>
+          {/* Performance Badge - Tablet */}
+          <div className="hidden md:flex lg:hidden items-center space-x-2 bg-gradient-emerald px-3 py-2 rounded-xl shadow-glow-emerald hover:scale-105 transition-all duration-300">
+            <SparklesIcon className="w-4 h-4 text-white animate-pulse" />
+            <div className="text-xs">
+              <span className="text-white font-bold">+{userProfile.netWorthGrowth}%</span>
+            </div>
+          </div>
+
+          {/* Mobile User Context */}
+          <div className="md:hidden flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gradient-emerald rounded-full flex items-center justify-center shadow-glow-emerald">
+              <span className="text-white font-bold text-xs">+{userProfile.netWorthGrowth}%</span>
+            </div>
+            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
           </div>
 
           {/* User Avatar & Info */}
@@ -53,8 +72,8 @@ const Header: React.FC = () => {
             <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-sunset rounded-xl flex items-center justify-center shadow-glow-sunset animate-float">
               <span className="text-white font-bold text-sm sm:text-base">{userProfile.initials}</span>
             </div>
-            <div className="hidden sm:block">
-              <p className="text-xs font-bold text-text-primary">Welcome back, {userProfile.name}!</p>
+            <div className="hidden sm:block lg:hidden">
+              <p className="text-xs font-bold text-text-primary">Welcome, {userProfile.name}!</p>
               <p className="text-xs text-text-secondary font-medium">₹{(userProfile.totalSavings / 100000).toFixed(1)}L saved</p>
             </div>
           </div>

@@ -76,6 +76,32 @@ function App() {
           <div className="w-full mobile-scroll">
             {renderContent()}
           </div>
+
+          {/* AI Branding Footer */}
+          <footer className="hidden sm:block bg-white/80 backdrop-blur-md border-t border-royal-100 p-4 mt-8">
+            <div className="max-w-7xl mx-auto flex items-center justify-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <span className="text-xs text-text-tertiary">Powered by</span>
+                <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-1">
+                    <span className="text-sm font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Gemini AI</span>
+                    <div className="w-1 h-1 bg-blue-500 rounded-full animate-pulse"></div>
+                  </div>
+                  <span className="text-xs text-text-tertiary">+</span>
+                  <div className="flex items-center space-x-1">
+                    <span className="text-sm font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Fi MCP</span>
+                    <div className="w-1 h-1 bg-emerald-500 rounded-full animate-pulse"></div>
+                  </div>
+                </div>
+              </div>
+              <div className="h-4 w-px bg-royal-200"></div>
+              <div className="flex items-center space-x-2">
+                <span className="text-xs text-text-tertiary">Secure</span>
+                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                <span className="text-xs text-emerald-700 font-semibold">Connected</span>
+              </div>
+            </div>
+          </footer>
         </main>
       </div>
     </div>

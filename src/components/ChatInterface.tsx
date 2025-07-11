@@ -105,33 +105,60 @@ const ChatInterface: React.FC = () => {
               Chat with Project Artha
             </h2>
             <p className="text-text-secondary font-medium text-sm sm:text-base">Ask me anything about your finances</p>
+            <div className="flex items-center space-x-2 mt-1">
+              <span className="text-xs text-text-tertiary">Powered by</span>
+              <div className="flex items-center space-x-1">
+                <span className="text-xs font-semibold text-royal-600">Gemini</span>
+                <span className="text-xs text-text-tertiary">+</span>
+                <span className="text-xs font-semibold text-emerald-600">Fi MCP</span>
+              </div>
+              <div className="w-1 h-1 bg-emerald-500 rounded-full animate-pulse"></div>
+            </div>
           </div>
           <div className="hidden sm:block">
             <IntegrationBadges showInHeader={true} />
           </div>
         </div>
 
-        {/* Quick Actions */}
-        <div className="mt-3">
+        {/* Enhanced Quick Actions */}
+        <div className="mt-4 space-y-3">
+          {/* What-If Simulation Button */}
+          <div className="bg-gradient-to-r from-royal-50 to-emerald-50 rounded-xl p-4 border border-royal-100">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-sm font-bold text-text-primary">💡 Try a What-If Simulation</h3>
+              <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full font-semibold">Popular</span>
+            </div>
+            <p className="text-xs text-text-secondary mb-3">Explore financial scenarios with AI-powered insights</p>
+            <button
+              onClick={() => handleQuickAction("What if I increase my SIP by ₹5K?")}
+              className="w-full btn-primary text-sm py-3 flex items-center justify-center space-x-2"
+            >
+              <span>🚀</span>
+              <span>What if I increase my SIP by ₹5K?</span>
+            </button>
+          </div>
+
           <button
             onClick={() => setShowQuickActions(!showQuickActions)}
-            className="flex items-center space-x-2 text-sm text-google-blue hover:text-blue-700"
+            className="flex items-center space-x-2 text-sm text-royal-600 hover:text-royal-700 transition-colors"
           >
             <AdjustmentsHorizontalIcon className="w-4 h-4" />
-            <span>Quick Actions</span>
+            <span>More Quick Actions</span>
           </button>
 
           {showQuickActions && (
-            <div className="mt-2 flex flex-wrap gap-2">
-              {quickActions.map((action, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleQuickAction(action)}
-                  className="text-xs bg-blue-50 text-google-blue px-3 py-1 rounded-full hover:bg-blue-100 transition-colors"
-                >
-                  {action}
-                </button>
-              ))}
+            <div className="mt-3 space-y-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {quickActions.map((action, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleQuickAction(action)}
+                    className="text-xs bg-white/80 backdrop-blur-sm text-text-primary px-4 py-3 rounded-xl hover:bg-white hover:shadow-card transition-all duration-300 border border-royal-100 text-left"
+                  >
+                    {action}
+                  </button>
+                ))}
+              </div>
             </div>
           )}
         </div>

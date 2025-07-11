@@ -1,9 +1,7 @@
 import React from 'react';
 import Chart from '../components/Chart';
-import AnomalyAlerts from '../components/AnomalyAlerts';
-import GoalProgressCards from '../components/GoalProgressCards';
 import IntegrationBadges from '../components/IntegrationBadges';
-import { netWorthData, sipPerformanceData, expenseCategories, anomalyAlerts, goalProgress } from '../data/dummyData';
+import { netWorthData, sipPerformanceData, expenseCategories } from '../data/dummyData';
 import { ChartData } from '../types';
 
 const Dashboard: React.FC = () => {
@@ -125,11 +123,159 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* Goal Progress Cards */}
-      <GoalProgressCards goals={goalProgress} className="mb-6" />
+      {/* Enhanced Goal Progress Section */}
+      <div className="mb-6 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl font-bold text-text-primary mb-4 sm:mb-6">Financial Goals Progress</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="card-premium p-5 sm:p-6 hover:scale-105 transition-all duration-300">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-bold text-text-primary">Emergency Fund</h3>
+              <span className="text-2xl">🛡️</span>
+            </div>
+            <div className="mb-3">
+              <div className="flex justify-between text-sm mb-2">
+                <span className="text-text-secondary">₹2,50,000 / ₹5,00,000</span>
+                <span className="font-bold text-royal-600">50%</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-3">
+                <div className="bg-gradient-royal h-3 rounded-full transition-all duration-500 animate-pulse-glow" style={{width: '50%'}}></div>
+              </div>
+            </div>
+            <p className="text-xs text-text-secondary">₹10K monthly target</p>
+          </div>
 
-      {/* Anomaly Alerts */}
-      <AnomalyAlerts alerts={anomalyAlerts} className="mb-6" />
+          <div className="card-premium p-5 sm:p-6 hover:scale-105 transition-all duration-300">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-bold text-text-primary">Home Down Payment</h3>
+              <span className="text-2xl">🏠</span>
+            </div>
+            <div className="mb-3">
+              <div className="flex justify-between text-sm mb-2">
+                <span className="text-text-secondary">₹8,50,000 / ₹15,00,000</span>
+                <span className="font-bold text-emerald-600">57%</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-3">
+                <div className="bg-gradient-emerald h-3 rounded-full transition-all duration-500 animate-pulse-glow" style={{width: '57%'}}></div>
+              </div>
+            </div>
+            <p className="text-xs text-text-secondary">₹25K monthly target</p>
+          </div>
+
+          <div className="card-premium p-5 sm:p-6 hover:scale-105 transition-all duration-300">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-bold text-text-primary">Vacation Fund</h3>
+              <span className="text-2xl">✈️</span>
+            </div>
+            <div className="mb-3">
+              <div className="flex justify-between text-sm mb-2">
+                <span className="text-text-secondary">₹75,000 / ₹2,00,000</span>
+                <span className="font-bold text-sunset-600">38%</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-3">
+                <div className="bg-gradient-sunset h-3 rounded-full transition-all duration-500 animate-pulse-glow" style={{width: '38%'}}></div>
+              </div>
+            </div>
+            <p className="text-xs text-text-secondary">₹8K monthly target</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Enhanced Recent Alerts & Anomaly Detection */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
+        <div className="card-premium p-5 sm:p-6">
+          <h2 className="text-lg sm:text-xl font-bold text-text-primary mb-4 flex items-center space-x-2">
+            <span>🚨</span>
+            <span>Recent Alerts</span>
+          </h2>
+          <div className="space-y-3">
+            <div className="p-3 sm:p-4 bg-red-50 rounded-xl border border-red-200 hover:shadow-medium transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-semibold text-red-800 text-sm sm:text-base">Overspent in June</h3>
+                  <p className="text-xs sm:text-sm text-red-600">₹12,000 above budget</p>
+                </div>
+                <div className="text-xl sm:text-2xl">📊</div>
+              </div>
+            </div>
+
+            <div className="p-3 sm:p-4 bg-yellow-50 rounded-xl border border-yellow-200 hover:shadow-medium transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-semibold text-yellow-800 text-sm sm:text-base">SIP Due Tomorrow</h3>
+                  <p className="text-xs sm:text-sm text-yellow-600">₹25,000 auto-debit scheduled</p>
+                </div>
+                <div className="text-xl sm:text-2xl">💰</div>
+              </div>
+            </div>
+
+            <div className="p-3 sm:p-4 bg-blue-50 rounded-xl border border-blue-200 hover:shadow-medium transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-semibold text-blue-800 text-sm sm:text-base">Goal Achievement</h3>
+                  <p className="text-xs sm:text-sm text-blue-600">Emergency fund 50% complete!</p>
+                </div>
+                <div className="text-xl sm:text-2xl">🎯</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="card-premium p-5 sm:p-6">
+          <h2 className="text-lg sm:text-xl font-bold text-text-primary mb-4 flex items-center space-x-2">
+            <span>📈</span>
+            <span>Spending Anomalies</span>
+          </h2>
+          <div className="space-y-3">
+            <div className="p-3 sm:p-4 bg-red-50 rounded-xl border border-red-200 hover:shadow-medium transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-semibold text-red-800 text-sm sm:text-base">Food & Dining</h3>
+                  <p className="text-xs sm:text-sm text-red-600">₹3,000 more than last month</p>
+                </div>
+                <div className="text-xl sm:text-2xl">🍽️</div>
+              </div>
+              <div className="mt-2 flex items-center space-x-2">
+                <div className="flex-1 bg-gray-200 rounded-full h-2">
+                  <div className="bg-red-500 h-2 rounded-full transition-all duration-500" style={{width: '75%'}}></div>
+                </div>
+                <span className="text-xs text-red-600 font-bold">+25%</span>
+              </div>
+            </div>
+
+            <div className="p-3 sm:p-4 bg-yellow-50 rounded-xl border border-yellow-200 hover:shadow-medium transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-semibold text-yellow-800 text-sm sm:text-base">Shopping</h3>
+                  <p className="text-xs sm:text-sm text-yellow-600">₹2,200 above average</p>
+                </div>
+                <div className="text-xl sm:text-2xl">🛍️</div>
+              </div>
+              <div className="mt-2 flex items-center space-x-2">
+                <div className="flex-1 bg-gray-200 rounded-full h-2">
+                  <div className="bg-yellow-500 h-2 rounded-full transition-all duration-500" style={{width: '60%'}}></div>
+                </div>
+                <span className="text-xs text-yellow-600 font-bold">+18%</span>
+              </div>
+            </div>
+
+            <div className="p-3 sm:p-4 bg-emerald-50 rounded-xl border border-emerald-200 hover:shadow-medium transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-semibold text-emerald-800 text-sm sm:text-base">Transportation</h3>
+                  <p className="text-xs sm:text-sm text-emerald-600">₹1,500 less than usual</p>
+                </div>
+                <div className="text-xl sm:text-2xl">🚗</div>
+              </div>
+              <div className="mt-2 flex items-center space-x-2">
+                <div className="flex-1 bg-gray-200 rounded-full h-2">
+                  <div className="bg-emerald-500 h-2 rounded-full transition-all duration-500" style={{width: '40%'}}></div>
+                </div>
+                <span className="text-xs text-emerald-600 font-bold">-12%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
